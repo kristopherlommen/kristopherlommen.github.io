@@ -1,15 +1,173 @@
+<!DOCTYPE html>
+<html>
 
-	<div align="center">
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Slate is a responsive theme for GitHub Pages" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <title>Kristopher Lommen's Projects page</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+
+
+          <h1 id="project_title">Kristopher Lommen</h1>
+          <h2 id="project_tagline">GitHub Base Directory</h2>
+        </header>
+    </div>
+
+
+
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+          <a id="forkme_banner" href="https://kristopherlommen.github.io/GunRange/">View Online!</a>
+        <h1>Firing Range Club Membership Website</h1>
+	        <p>Created in Angular 2, using sails.js and implementing CSS, SQL, HTML, and Javascript technologies. </p>
+	
+ <img src="http://i.imgur.com/jV1miB2.jpg" width="351.25" height="233">
+		
+
+        <h1>Intended Use</h1>
+
+        <p>Created as a replacement to the previous club website. A more responsive and useful website was desired for the needs of the Club managers. Visualizing and being able to actually see database information (Members, payment dues) were the main reasons for creation of the replacement. Previously, little to no querying could be done to view useful information about members. It was difficult to determine who actually was a member, and who actually had paid their regular membership fees.</p>
+
+        <h2>Features</h2>
+		<ul>
+          <li>Visually pleasing and responsive interface</li>
+		  <li>Secure navigation/Traversing through pages(Accomplished through Angular's routing using guards)</li>
+<li>Database integration to allow for searching and viewing of member information</li>
+        </ul>
+
+		<b>Planned Features</b>
+        <ul>
+		<li>More abilities for Administrators (Pre-built queries such as viewing members that are due to pay/soon due to pay)</li>
+        <li>Dynamic Output of DOM (Pushing new alerts/notifications to the site as well as overall customization) </li>
+        <li>Increased ability for a person, regardless of technological background, to dynamically change the site's interface to their needs </li>
+        </ul>
+
+
+<b>Code Snippets </b>
+Navbar Snippet's CSS
+<pre>
+&lt;ul id="Navigation" class="nav navbar-nav" display="inline-block" text-align="center"&gt; 
+	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
+		&lt;a [routerLink]="['/']"&gt;Home&lt;/a&gt;&lt;/li&gt;
+	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
+		&lt;a routerLink="Member"&gt;Member&lt;/a&gt;&lt;/li&gt;
+	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
+		&lt;a routerLink="News"&gt;News & Info&lt;/a&gt;&lt;/li&gt;
+	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
+		&lt;a routerLink="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt; 
+&lt;ul&gt; 
+</pre>
+
+
+Routing Snippet
+<pre>
+ { path: '', component: HomeComponent},
+  { path: 'Login', component: LoginComponent},
+  { path: 'Signup', component: SignupComponent},
+  { path: 'Member', component: MembershipComponent},
+</pre>
+
+      </section>
+    </div>
+	<div style="margin-top: 4em;">
+	<div id="main_content_wrap" class="outer">
+	
+	 <section id="main_content" class="inner">
+          <a id="forkme_banner" href="https://github.com/kristopherlommen/android-libraryapp">View on GitHub</a>
+        <h1>Android/PHP Book Store System</h1>
+		 <p>Created in Android Studio, using Java and PHP for SQL database interfacing.  Site made using basic CSS, HTML, and Javascript technologies. </p>
+ <img src="http://i.imgur.com/qn5F94X.png" style = "width:30%; height:30%;" >
+
+ <img src="http://i.imgur.com/osBFwY5.png" style = "width:60%; height:60%;">
+<p> Login screen and search results retrieved from the DB during a query </p>
+		<img src="http://i.imgur.com/1luHtbN.png" style = "width:100%; height:100%;">
+		<p> Admin panel where more powerful options are available for manipulating the database/viewing entries</p>
+       
+
+        <h1>Intended Use</h1>
+
+        <p>Created to simulate an Android bookstore application where users can register for a store, search and buy books. Users are able to search, purchase, and view the history of their purchases</p>
+
+        <h2>Features</h2>
+		<ul>
+          <li>mySQLi database integration to accomodate for the storage and retrieval of users, books, and purchase history</li>
+		  <li>Admin panel where new books may be added into the database as well as viewing of all user settings/purchase history</li>
+        </ul>
+
+
+<b>Code Snippets </b>
+Basic book ISBN SQL search done through PHP (echo'd back for the Android's Java to interpret):
+<pre>
+$isbn = $_POST['ISBN'];
+  
+  $u = "root";
+  $host     = "localhost";
+  $conn     = mysqli_connect( $host, $u);
+  
+  if ( !$conn )
+    die( 'Could not connect to MySQL: ' . mysqli_error( ) );
+  else {
+    mysqli_select_db( $conn, "library" );
+	
+	$sql = "select * from books where books.ISBN like '%$isbn%'";
+	$result = mysqli_query($conn,$sql);
+	if (mysqli_num_rows($result) <1)
+	{
+		echo "No Book found";
+	}		
+
+
+
+</pre>
+
+      </section>
 	
 	
-		<div class="col-xs-12">
-				<h3>
-					Kristopher Lommen Index Page
-				</h3>
-				<a href="/GunRange">Angular 2 HTML CSS Javascript</a>
-		</div
 	
-	</div
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	</div>
 
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Slate theme provided by <a href="https://github.com/jasoncostello">Jason Costello</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
 
-
+  </body>
+</html>
