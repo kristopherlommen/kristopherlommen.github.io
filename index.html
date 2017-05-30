@@ -35,56 +35,120 @@
       <section id="main_content" class="inner">
           <a id="forkme_banner" href="https://kristopherlommen.github.io/GunRange/">View Online!</a>
         <h1>Firing Range Club Membership Website</h1>
-	        <p>Created in Angular 2, using sails.js and implementing CSS, SQL, HTML, and Javascript technologies. </p>
+	        <p>Created in Angular 2, using Firebase and implements CSS, HTML, and Javascript technologies. </p>
 	
  <img src="http://i.imgur.com/jV1miB2.jpg" width="351.25" height="233">
 		
 
         <h1>Intended Use</h1>
 
-        <p>Created as a replacement to the previous club website. A more responsive and useful website was desired for the needs of the Club managers. Visualizing and being able to actually see database information (Members, payment dues) were the main reasons for creation of the replacement. Previously, little to no querying could be done to view useful information about members. It was difficult to determine who actually was a member, and who actually had paid their regular membership fees.</p>
+        <p>Created as an eventual replacement to the current club website. A more responsive and useful website was desired for the needs of the Club managers. Visualizing and being able to actually see database information (Members, payment dues) were the main reasons for creation of the replacement. Previously, little to no querying could be done to view useful information about members. It was difficult to determine who actually was a member, and who actually had paid their regular membership fees.</p>
 
         <h2>Features</h2>
 		<ul>
           <li>Visually pleasing and responsive interface</li>
+		  <li>Ability for privileged users to push new notifications to the home-page as well as monitor user records.</li>
 		  <li>Secure navigation/Traversing through pages(Accomplished through Angular's routing using guards)</li>
-<li>Database integration to allow for searching and viewing of member information</li>
-        </ul>
-
-		<b>Planned Features</b>
-        <ul>
-		<li>More abilities for Administrators (Pre-built queries such as viewing members that are due to pay/soon due to pay)</li>
-        <li>Dynamic Output of DOM (Pushing new alerts/notifications to the site as well as overall customization) </li>
-        <li>Increased ability for a person, regardless of technological background, to dynamically change the site's interface to their needs </li>
+		 <li>Database integration to allow for searching and viewing of member information</li>
         </ul>
 
 
-<b>Code Snippets </b>
-Navbar Snippet's CSS
+
+<b>Code Snippets: </b>
+<br>
 <pre>
-&lt;ul id="Navigation" class="nav navbar-nav" display="inline-block" text-align="center"&gt; 
-	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
-		&lt;a [routerLink]="['/']"&gt;Home&lt;/a&gt;&lt;/li&gt;
-	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
-		&lt;a routerLink="Member"&gt;Member&lt;/a&gt;&lt;/li&gt;
-	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
-		&lt;a routerLink="News"&gt;News & Info&lt;/a&gt;&lt;/li&gt;
-	&lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt;
-		&lt;a routerLink="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt; 
-&lt;ul&gt; 
+
+      &lt;ul class="nav navbar-nav" display="inline-block" text-align="center" routerLinkActive="active"  &gt; 
+        &lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt; 
+          &lt;a [routerLink]="['/']"&gt; Home&lt;/a&gt; &lt;/li&gt; 
+        &lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt; 
+          &lt;a [routerLink]="['/Member']"&gt; Member&lt;/a&gt; &lt;/li&gt; 
+        &lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt; 
+          &lt;a [routerLink]="['/News']"&gt; News & Info&lt;/a&gt; &lt;/li&gt; 
+        &lt;li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"&gt; 
+          &lt;a [routerLink]="['/Contact']"&gt; Contact&lt;/a&gt; &lt;/li&gt; 
+        &lt;li *ngIf="LoginService.loggedin()" &gt; 
+          &lt;a [routerLink]="['/Admin']"&gt; Admin Panel&lt;/a&gt; 
+      &lt;/ul&gt; 
+	  
 </pre>
-
-
-Routing Snippet
+Navbar Snippet's HTML with dynamic CSS classes activated upon being active
+<br>
+<br>
 <pre>
- { path: '', component: HomeComponent},
-  { path: 'Login', component: LoginComponent},
-  { path: 'Signup', component: SignupComponent},
+const APP_ROUTES: Routes = [
+  { path: '', component: HomeComponent},
+
   { path: 'Member', component: MembershipComponent},
+  { path: 'News',  component: NewsEventsComponent},
+  { path: 'Contact', component: ContactComponent},
+  { path: 'Admin', component: AdminPanelComponent, canActivate: [AuthGaurd]},
+  { path: 'Admin/AddAdmin', component: AddAdminComponent, canActivate: [AuthGaurd] },
+  { path: 'Admin/EditHome', component: EditHomePageComponent, canActivate: [AuthGaurd]},
+  { path: 'Admin/ViewUsers', component: ViewusersComponent, canActivate: [AuthGaurd]},
+  { path: 'Login', component: LoginComponent}
+];
 </pre>
+Routing Snippet with guards
+
 
       </section>
     </div>
+	
+		</div>
+	
+		<div style="margin-top: 4em;">
+	<div id="main_content_wrap" class="outer">
+	
+	 <section id="main_content" class="inner">
+          <a id="forkme_banner" href="https://github.com/MatthewTingum/Screenshot-Tagging-System/">View on GitHub</a>
+        <h1>Senior Project (Screenshot Tagger Program)</h1>
+		 <p>Three part project. Lua and XML Addon written for World of Warcraft, local application written in Java, and web-interface written in Angular with sails.js </p>
+ <img src="http://i.imgur.com/BvWxpVf.jpg" style = "width:60%; height:60%;" >
+
+
+<p> Poster of the project </p>
+
+
+
+        <h1>Intended Use</h1>
+
+        <p>A team of sociologists submitted a request for a program that would allow for better behavoral study of events in an online environment, specifically World of Warcraft. It was desired to create a platform where researchers could catalog and more easily analyze/share events from in-game.</p>
+
+        <h2>Features</h2>
+		<ul>
+          <li>Lua Addon that allows for taking of screenshots as well as record keeping of the events being depicted in the screenshots themselves. Chat log dumps are also used.</li>
+		  <li>User client written in Java allows for the preparation of all data from the Addon to be submitted to the online web-system</li>
+		  <li>Web front-end written in Angular allows for querying and searching of data between multiple users.</li>
+        </ul>
+
+
+
+
+      </section>
+
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<div style="margin-top: 4em;">
 	<div id="main_content_wrap" class="outer">
 	
@@ -137,20 +201,82 @@ $isbn = $_POST['ISBN'];
 </pre>
 
       </section>
+
+	</div>
 	
 	
 	
 	
 	
 	
+	</div>
 	
+		<div style="margin-top: 4em;">
+	<div id="main_content_wrap" class="outer">
 	
-	
-	
-	
-	
-	
-	
+	 <section id="main_content" class="inner">
+          <a id="forkme_banner" href="https://github.com/kristopherlommen/taiga">View on GitHub</a>
+        <h1>Taiga C++ Addon</h1>
+		 <p>Built off the open source program <a href ="taiga.moe/">Taiga</a> to fulfill a personal need for persistent playlists of television shows. Developed in Visual Studio 2017 using C++ and some XML elements for UI display. Gained experience working with an open source project and mimicking pre-existing coding conventions as well as re-using already created functions. </p>
+ <img src="http://i.imgur.com/e4MQz5g.png" style = "width:80%; height:80%;" >
+
+
+<p> Newly created area on the program along with the listview of the shows in the playlist. </p>
+		 <img src="http://i.imgur.com/1EVNNtb.png" style = "width:80%; height:80%;">
+		<p> Generated playlist file.</p>
+       
+
+        <h1>Intended Use</h1>
+
+        <p> Previously every show needed to be started individually, and consecutive playback was not possible. Main motivation was to allow for this type of behavior in the program.</p>
+
+        <h2>Features</h2>
+		<ul>
+          <li>Drag/dropping of listview titles to reorganize the playlist to the user's choosing.</li>
+		  <li>Automatically updates user file in local storage for persistence through program restarts.</li>
+		  <li>Exportable dynamic playlist in M3U support.</li>
+        </ul>
+
+
+<b>Code Snippets </b>
+Initial establishment to allow for dragging/dropping of listview items, which dynamically update the vector of items in which they are arranged.
+<pre>
+		case WM_LBUTTONUP: {
+			// Drop list item
+			if (listview.dragging) {
+				listview.drag_image.DragLeave(GetWindowHandle());
+				listview.drag_image.EndDrag();
+				listview.drag_image.Destroy();
+				listview.dragging = false;
+				ReleaseCapture();
+
+				int anime_idcur = GetCurrentId();
+				auto anime_ids = GetCurrentIds();
+				if (anime_ids.size() > 1) return 0;
+				auto anime_item = GetCurrentItem();
+
+				lvhti.pt.x = LOWORD(lParam);
+				lvhti.pt.y = HIWORD(lParam);
+
+				ClientToScreen(DlgMain.GetWindowHandle(), &lvhti.pt);
+				ScreenToClient(GetWindowHandle(), &lvhti.pt);
+				lvhti.iItem = list_.HitTest();
+				if (lvhti.iItem == -1) {
+					TRACE("\nOutside of List!\n", lvhti.iItem);
+					return 0;
+				}
+				if (((lvhti.flags & LVHT_ONITEMLABEL == 0)) && ((lvhti.flags & LVHT_ONITEMSTATEICON == 0)))
+				{
+					TRACE("\nNOT IN AN ITEM\n", lvhti.iItem);
+					return 0;
+				}
+
+
+
+</pre>
+
+      </section>
+
 	
 	</div>
 	
@@ -160,6 +286,12 @@ $isbn = $_POST['ISBN'];
 	
 	
 	</div>
+	
+	
+	
+	
+	
+	
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
